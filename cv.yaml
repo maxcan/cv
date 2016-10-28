@@ -1,0 +1,189 @@
+basic:
+  name: Max Cantor
+  loc: San Francisco, CA
+  phone: +1-215-620-3000
+  email: i@cantor.mx
+  social:
+    - linkedIn: https://www.linkedin.com/in/mxcan
+  passions:
+    - entrepreneurship
+    - engineering
+    - aviation
+    - fitness and lifting heavy things
+  description: >
+    Sells ice to eskimos,
+    builds the e-commerce site and logistics backend,
+    and loads the bags
+workExperience:
+  - position:         Director of Research and Development
+    _icOrMgr:         mgr
+    company:          Nitro Software Inc.
+    start:            2015-07-02
+    loc:              San Francisco Bay Area
+    highlights:
+      - Acquired doxIQ in July 2015.
+      - Managed Research and Development team.
+      - Built PDF reflow and form field detection tools for cloud product.
+      - Introduced Typescript and worked with engineering ICs to enhance code hygiene and improved engineering practices.
+    skills:
+        full:
+          - scala
+          - javascript
+          - typescript
+          - reactJS
+          - AWS
+        partial:
+          - angularJS 1.x
+          - python
+          - jenkins
+  - position:        Co-Founder
+    _icOrMgr:        mgr
+    company:         Docmunch / doxIQ
+    start:           2013-01-02
+    end:             2015-07-02
+    loc:             San Francisco Bay Area
+    highlights:
+      - Built the product and team behind doxIQ.  
+      - Pitched to and won the 2014 VentureBeat Marketing Tech Innovation Showdown.
+      - Closed 2 enterprise contracts, providing the bulk of the revenue for docmunch.
+      - Managed recruiting, front and back end enginering, dev ops, and data for doxIQ and docmunch.
+    skills:
+        full:
+          - haskell
+          - javascript
+          - typescript
+          - angularJS 1.x
+          - AWS
+          - mongoDB
+          - bootstrap
+  - position:         CEO and Founder
+    _icOrMgr:         mgr
+    company:          River Valley Networks Pte Ltd D.B.A. Hachicode
+    start:            2010-09-02
+    end:              2012-02-02
+    loc:              Singapore
+    highlights:
+      - Built the Hachicode loyalty platform.
+      - Built a HTML5 based mobile app which was used to let users engage with retailers, acquire receipt images with QR-code scanner UX style, accumulate points, and cash in points for rewards at their favorite retailers. 
+      - Developed OTA update system to deliver app updates to users with out a trip to the App store while complying with Apple and Google regulations.
+      - Built the backend, Haskell based backend. The backend used OTS and custom OCR tools to scan receipt images uploaded by phones, determine the users' purchases and assign points accordingly.
+      - Managed a team of 3 developers/product staff and one part time business development staff.
+    skills:
+        full:
+          - haskell
+          - javascript
+          - angularJS 1.x
+          - AWS
+          - mongoDB
+          - bootstrap
+          - phonegap
+        partial:
+          - jquery mobile
+
+  - position:         Principal
+    _icOrMgr:         mgr
+    company:          EKC Research Pte Ltd
+    start:            2009-06-02
+    end:              2011-01-02
+    loc:              Singapore
+    highlights:
+      - Built and traded on a full, front to back, high frequency trading system in Haskell.
+      - Custom developed components included a custom FIX engine to connect to Interactive Brokers.
+      - Built fair-value middleware which fully encapsulated trading strategies from execution engine. This allowed any execution strategy to be paired with any fair value model, which included arbitrage strategies, short term mean reversion, and directional models.
+    skills:
+        full:
+          - haskell
+          - fix
+          - VBA
+
+  - position:         Senior Arbitrage Trader
+    _icOrMgr:         mgr
+    company:          Nyenburgh Pte Ltd
+    start:            2008-02-02
+    end:              2009-05-02
+    loc:              Singapore
+    highlights:
+      - Managed portfolio of delta one arbitrage strategies for Asia.
+      - Worked with IT team in Singapore and Amsterdam to build out the existing European arbitrage engine for Asian markets.
+      - Developed proprietary quantitative trading tools for our desk.
+      - Trained and managed one junior trader from zero experience to independent competency.
+    skills:
+        full:
+          - C#
+        partial:
+          - scala
+          - F#
+
+  - position:         Junior Trader
+    _icOrMgr:         ic
+    company:          Jane Street Capital
+    start:            2006-09-02
+    end:              2007-12-02
+    loc:              Tokyo
+    highlights:
+      - Developed PnL tracking tool to track performance of all of the desks in Tokyo.
+      - Managed AU/NZ delta-one arb strategies.
+      - Backtested new strategies and optimized existing strategies.
+      - Rolled out first OCaml based tools in for the Tokyo office.
+    skills:
+        full:
+          - OCaml
+          - VBA
+        partial:
+          - perl
+
+  - position:         Derivatives Broker
+    _icOrMgr:         ic
+    company:          UBS Investment Bank
+    start:            2005-06-02
+    end:              2006-09-02
+    loc:              Tokyo
+    highlights:
+      - Handled several offshore client relationships for the Exchange Traded Derivatives Desk.
+      - Provided execution and commentary for Japanese Equity and Bond futures and options market.
+      - Instituted error reduction project which signficantly reduced manual execution errors.
+
+    skills:
+        full:
+          - VBA
+        partial:
+          - perl
+          - java
+
+  - position:         IT Developer
+    _icOrMgr:         ic
+    company:          UBS Investment Bank
+    start:            2004-06-02
+    end:              2005-06-02
+    loc:              Tokyo
+    highlights:
+      - Worked on Direct Market Access team to build projects to enable Japanese clients to trade directly on the Tokyo and Osaka stock exchanges.
+      - Built daily mark to market system for bespoke derivatives desk.
+    skills:
+        full:
+          - java
+          - javascript
+
+education:
+  - institution:  University of Pennsylvania
+    degree:       Master of Science (MS), Computer Science
+    start:        2003-09-02
+    end:          2004-05-02
+  - institution:  University of Pennsylvania
+    degree:       Bachelor of Science (BS), Computer Science
+    start:        1999-09-02
+    end:          2004-05-02
+
+certifications:
+  - name:   CFA (Examinations only)
+    start:  2006-06-02
+  - name:   US Private Pilots License
+    start:  2013-09-02
+  - name:   Crossfit Level 1 Trainer
+    start:  2015-09-02
+
+publications:
+  - name: Interpolated Equity
+    description: >
+      Towards a fair, mathematically grounded approach to cash vs equity compensation at private companies
+    url: https://medium.com/this-time-is-different/interpolated-equity-12ddebcc63ef

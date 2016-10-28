@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"target": "ES3",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"experimentalDecorators": true,
+        "jsx": "react",
+        "outDir": "./dist/",
+		"noImplicitAny": true
+	},
+	"exclude": [
+		"node_modules"
+	]
+}
