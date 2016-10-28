@@ -2,10 +2,23 @@ span.comma-sep + span.comma-sep:before {
     content: ", ";
 }
 
+table.skills-table {
+    background: black;
+    color: white;
+
+}
 table.skills-table td.skill-full {
     background-color: green
 }
 
 table.skills-table td.skill-partial {
     background-color: yellow
+}
+header h1 {
+    display: inline-block
+}
+
+.cv-body {
+    margin-top: 3em;
+    position: relative
 }

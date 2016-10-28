@@ -103,36 +103,61 @@ const Dt = ({dt}: {dt: Date}) => {
 const CvBasic = ({basic}: {basic: Basic}) => {
     return (
         <header> 
-            <h1>{basic.name}</h1>
-            { basic.title && <h2>{basic.title}</h2> }
-            <h3>{basic.loc}</h3>
-            { basic.phone && <h3>{basic.phone}</h3> }
-            { basic.email && <h3>{basic.email}</h3> }
+            <div className="clearfix">
+                <h1>{basic.name}</h1>
+                { basic.title && <h2>{basic.title}</h2> }
+                <div className="pull-right">
+                    <h3>{basic.loc}</h3>
+                    { basic.phone && <h3>{basic.phone}</h3> }
+                { basic.email && <h3>{basic.email}</h3> }
+                </div>
+            </div>
             <hr />
-            { basic.passions && basic.passions.map((s:string) =>
-                <span className="comma-sep" key={s}>{s}</span>
-            )}
+            { basic.passions &&
+                <span>
+                    passions in life:&nbsp;
+                    <strong>
+                        {basic.passions.map((s:string) => <span className="comma-sep" key={s}>{s}</span> )}
+                    </strong>
+                </span>
+            }
             { basic.social && <CvSocial social={basic.social}/>}
-            <hr />
-            <div>{basic.description}</div>
         </header>
     )
 }
 // class CvRoot extends React.Component<{cv: Cv}, {} > {
 const CvRoot = ({cv}: {cv: Cv}) => {
     return (
-        <div className="container">
-            <CvBasic basic={cv.basic} />
-            <hr/>
-            <CvWork allWork={cv.workExperience} />
-            <hr/>
-            <CvEducation allEdu={cv.education} />
-            <hr/>
-            <CvCertifications allCerts={cv.certifications} />
-            <hr/>
-            <CvPublications allPub={cv.publications} />
-            <hr/>
-            <div id="skills_table"><SkillsTable cv={cv}/></div>
+        <div className="cv-main container" data-spy="scroll" data-target="#navbar">
+            <nav id="navbar" className="navbar navbar-default navbar-fixed-top">
+                <div className="container">
+                    <div className="navbar-header">
+                        <a className="navbar-brand" href="#">CV Navigation</a>
+                    </div>
+                    <ul className="nav navbar-nav">
+                        <li><a href="#work">Work Experience</a></li>
+                        <li><a href="#education">Education</a></li>
+                        <li><a href="#publications">Publications</a></li>
+                        <li><a href="#certifications">Certifications</a></li>
+                    </ul>
+                    <ul className="navbar-right nav navbar-nav">
+                        <li><a href="#skills_table">Skills Timeline</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div className="cv-body">
+                <CvBasic basic={cv.basic} />
+                <hr/>
+                <CvWork allWork={cv.workExperience} />
+                <hr/>
+                <CvEducation allEdu={cv.education} />
+                <hr/>
+                <CvCertifications allCerts={cv.certifications} />
+                <hr/>
+                <CvPublications allPub={cv.publications} />
+                <hr/>
+                <div id="skills_table"><SkillsTable cv={cv}/></div>
+            </div>
         </div>
     )
 }

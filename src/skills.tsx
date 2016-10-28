@@ -45,7 +45,7 @@ export default ({cv}: { cv: Cv }) => {
     }
     // console.log("all ckills" , allSkills)
     return (
-        <table className="skills-table table skills-table table-inverse table-striped table-bordered">
+        <table className="skills-table table skills-table table-bordered">
             <thead>
                 <tr>
                     <th></th>
