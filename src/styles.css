@@ -1,5 +1,15 @@
-span.comma-sep + span.comma-sep:before {
+ul.comma-sep {
+    list-style: none
+}
+ul.comma-sep li {
+    display: inline-block;
+    padding-right: 0.25em;
+}
+ul.comma-sep li:after {
     content: ", ";
+}
+ul.comma-sep li:last-child:after {
+    content: "";
 }
 
 table.skills-table {
@@ -21,4 +31,8 @@ header h1 {
 .cv-body {
     margin-top: 3em;
     position: relative
+}
+
+* {
+    font-family: Lato, "Helvetica Neue",Helvetica,Arial,sans-serif
 }
