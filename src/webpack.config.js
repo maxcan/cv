@@ -16,7 +16,8 @@ module.exports = {
         loaders: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
             { test: /\.tsx?$/, loader: "ts-loader" },
-            { test: /\.css$/, loader: "style-loader!css-loader" },
+            { test: /\.css$/, loader: "style-loader!css-loader!autoprefixer-loader" },
+            { test: /\.styl$/, loader: "style-loader!css-loader!autoprefixer-loader!stylus-loader" },
             { test: /\.yaml$/, loader: "yaml"}
         ],
 
