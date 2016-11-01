@@ -16,8 +16,15 @@ module.exports = {
         loaders: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
             { test: /\.tsx?$/, loader: "ts-loader" },
-            { test: /\.css$/, loader: "style-loader!css-loader" },
-            { test: /\.yaml$/, loader: "yaml"}
+            // { test: /\.css$/, loader: "style-loader!css-loader" },
+            {
+                test: /\.css$/,
+                loaders: [
+                    'style?sourceMap',
+                    'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
+                ]
+            },
+            { test: /\.yaml$/, loader: "yaml" }
         ],
 
         preLoaders: [
@@ -38,5 +45,5 @@ module.exports = {
         fs: 'empty',
         net: 'empty',
         tls: 'empty'
-  }
+    }
 };
