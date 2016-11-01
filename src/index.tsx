@@ -3,7 +3,7 @@ import * as React from "react"
 import * as ReactDOM from "react-dom"
 import * as moment from "moment"
 import SkillsTable from "./components/skills"
-require("./styles.css")
+// require("./styles.css")
 
 const cv: Cv = require("!json!yaml!../cv.yaml") as Cv
 import CvRoot from "./components/root"

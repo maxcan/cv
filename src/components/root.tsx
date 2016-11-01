@@ -3,12 +3,13 @@ import * as React from "react"
 import * as ReactDOM from "react-dom"
 import * as moment from "moment"
 import SkillsTable from "./skills"
+import * as CSSModules from 'react-css-modules';
 import CvBasic from "./basic"
-require("./styles.css")
+// require("./styles.css")
 
 const styles = require<any>("./root.css")
 
-const cv: Cv = require("!json!yaml!../cv.yaml") as Cv
+const cv: Cv = require("!json!yaml!../../cv.yaml") as Cv
 
 const CvWorkSkills = ({skills}: { skills: WorkSkills }) => {
     return (
@@ -90,7 +91,7 @@ const Dt = ({dt}: { dt: Date }) => {
     return <span className="date">{moment(dt).format("MMMM YYYY")}</span>
 }
 // class CvRoot extends React.Component<{cv: Cv}, {} > {
-export default ({cv}: { cv: Cv }) => {
+const root = ({cv}: { cv: Cv }) => {
     return (
         <div className="cv-main " data-spy="scroll" data-target="#navbar">
             <nav id="navbar" className="navbar navbar-default navbar-fixed-top">
@@ -113,6 +114,7 @@ export default ({cv}: { cv: Cv }) => {
                 <header>
                     <CvBasic basic={cv.basic} />
                 </header>
+                {/* 
                 <div className="pull-right col-md-9">
                     <hr />
                     <CvWork allWork={cv.workExperience} />
@@ -125,7 +127,9 @@ export default ({cv}: { cv: Cv }) => {
                     <hr />
                     <div id="skills_table"><SkillsTable cv={cv} /></div>
                 </div>
+                    */}
             </div>
         </div >
     )
 }
+export default CSSModules(root, styles)
