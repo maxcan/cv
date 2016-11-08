@@ -2,7 +2,10 @@ import * as _ from "lodash"
 import * as React from "react"
 import * as ReactDOM from "react-dom"
 import * as moment from "moment"
+
 import SkillsTable from "./skills"
+var FontAwesome = require('react-fontawesome') as any
+
 require("./styles.less")
 
 const cv: Cv = require("!json!yaml!../cv.yaml") as Cv
@@ -61,15 +64,6 @@ const CvArticleSection = (props: CvArticleSectionProps) => {
     )
 }
 
-const CvSocial = ({social}: { social: Social }) => {
-    return (
-        <ul>
-            {social.linkedIn && <li>{social.linkedIn}</li>}
-            {social.web && <li><a href={social.web}>{social.web}</a></li>}
-            {social.facebook && <li>{social.facebook}</li>}
-        </ul>
-    )
-}
 const CvWorkSkills = ({skills}: { skills: WorkSkills }) => {
     return (
         <ul className="skills">
@@ -150,21 +144,47 @@ const DtRng = ({st, en}: { st?: Date, en?: Date }) => {
 const Dt = ({dt}: { dt: Date }) => {
     return <span className="date">{moment(dt).format("MMMM YYYY")}</span>
 }
+
+
+const CvSocialItem = ({iconName, val, isUrl}: {iconName: string, val?: string, isUrl?:Boolean}) => {
+    return ( val ?
+        <h3 className="social-item">
+            <FontAwesome name={iconName}/>
+            { isUrl ? <a href={val} className="social-val no-print-url">{val}</a> : <span className="social-val">{val}</span> }
+        </h3>
+    : <span></span>
+    )
+}
+const CvSocial = ({social}: { social: Social }) => {
+    return (
+        <div className="contact social">
+            <CvSocialItem val={social.linkedIn} iconName="linkedin-square"/>
+            <CvSocialItem val={social.web} iconName="link" isUrl={true}/>
+            <CvSocialItem val={social.facebook} iconName="facebook-square"/>
+        </div>
+    )
+}
+
+
 const CvBasic = ({basic}: { basic: Basic }) => {
-    console.log(basic)
     return (
         <div className="basic">
             <h1>{basic.name}</h1>
             {basic.title && <h2>{basic.title}</h2>}
             <div className="contact">
+                <CvSocialItem val={basic.loc} iconName="map-marker"/>
+                <CvSocialItem val={basic.phone} iconName="phone"/>
+                <CvSocialItem val={basic.email} iconName="envelope"/>
+                { /*
                 <h3>{basic.loc}</h3>
-                {basic.phone && <h3>{basic.phone}</h3>}
-                {basic.email && <h3>{basic.email}</h3>}
+                {basic.phone && <h3><FontAwesome name="phone"/>{basic.phone}</h3>}
+                {basic.email && <h3><FontAwesome name="envelope"/>{basic.email}</h3>}
+                     */}
             </div>
-            <hr />
             {basic.social && <CvSocial social={basic.social} />}
+            <hr />
             {basic.passions &&
-                <span>
+                <span className="h4">
                     passions in life:&nbsp;
                     <ul className="strong comma-sep">
                         {basic.passions.map((s: string) =>
