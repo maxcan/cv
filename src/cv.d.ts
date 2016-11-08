@@ -12,6 +12,7 @@ interface Basic {
 
 interface Social {
     linkedIn?: string
+    web?: string
     facebook?: string
 }
 interface WorkSkills {

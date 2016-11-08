@@ -4,7 +4,8 @@ basic:
   phone: +1-215-620-3000
   email: i@cantor.mx
   social:
-    - linkedIn: https://www.linkedin.com/in/mxcan
+    linkedIn: https://www.linkedin.com/in/mxcan
+    web: https://cv.cantor.mx
   passions:
     - entrepreneurship
     - engineering

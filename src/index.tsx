@@ -21,10 +21,10 @@ const CvArticle = ({name, children = null}: { children?: JSX.Element, name: stri
     return (
         <article id={noSpace}>
             <div className="row">
-                <div className="col-sm-3">
-                    <h1 className="pull-right">{name}</h1>
+                <div className="col-xs-3">
+                    <h1 className="text-right">{name}</h1>
                 </div>
-                <div className="col-sm-9">
+                <div className="col-xs-9">
                     {children}
                 </div>
             </div>
@@ -46,13 +46,15 @@ interface CvArticleSectionProps {
 const CvArticleSection = (props: CvArticleSectionProps) => {
     return (
         <section>
-            {props.loc && <h5 className="pull-right">{props.loc}</h5>}
             { props.url
             ? <a href={props.url}><h2>{props.title}</h2></a>
             : <h2>{props.title}</h2>
             }
             {props.subtitle && <h3>{props.subtitle}</h3>}
-            <p><DtRng st={props.st} en={props.en} /></p>
+            <p>
+                <DtRng st={props.st} en={props.en} />
+                {props.loc && <em className="pxxull-right">,&nbsp;{props.loc}</em>}
+            </p>
             { props.desc && <p>{props.desc}</p>}
             {props.children}
         </section>
@@ -63,6 +65,7 @@ const CvSocial = ({social}: { social: Social }) => {
     return (
         <ul>
             {social.linkedIn && <li>{social.linkedIn}</li>}
+            {social.web && <li><a href={social.web}>{social.web}</a></li>}
             {social.facebook && <li>{social.facebook}</li>}
         </ul>
     )
@@ -148,6 +151,7 @@ const Dt = ({dt}: { dt: Date }) => {
     return <span className="date">{moment(dt).format("MMMM YYYY")}</span>
 }
 const CvBasic = ({basic}: { basic: Basic }) => {
+    console.log(basic)
     return (
         <div className="basic">
             <h1>{basic.name}</h1>
@@ -158,6 +162,7 @@ const CvBasic = ({basic}: { basic: Basic }) => {
                 {basic.email && <h3>{basic.email}</h3>}
             </div>
             <hr />
+            {basic.social && <CvSocial social={basic.social} />}
             {basic.passions &&
                 <span>
                     passions in life:&nbsp;
@@ -168,7 +173,6 @@ const CvBasic = ({basic}: { basic: Basic }) => {
                     </ul>
                 </span>
             }
-            {basic.social && <CvSocial social={basic.social} />}
         </div>
     )
 }
