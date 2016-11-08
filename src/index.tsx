@@ -3,7 +3,7 @@ import * as React from "react"
 import * as ReactDOM from "react-dom"
 import * as moment from "moment"
 import SkillsTable from "./skills"
-require("./styles.styl")
+require("./styles.less")
 
 const cv: Cv = require("!json!yaml!../cv.yaml") as Cv
 
@@ -21,10 +21,10 @@ const CvArticle = ({name, children = null}: { children?: JSX.Element, name: stri
     return (
         <article id={noSpace}>
             <div className="row">
-                <div className="col-lg-3">
+                <div className="col-sm-3">
                     <h1 className="pull-right">{name}</h1>
                 </div>
-                <div className="col-lg-9">
+                <div className="col-sm-9">
                     {children}
                 </div>
             </div>
@@ -46,7 +46,7 @@ interface CvArticleSectionProps {
 const CvArticleSection = (props: CvArticleSectionProps) => {
     return (
         <section>
-            {props.loc && <h4 className="pull-right">{props.loc}</h4>}
+            {props.loc && <h5 className="pull-right">{props.loc}</h5>}
             { props.url
             ? <a href={props.url}><h2>{props.title}</h2></a>
             : <h2>{props.title}</h2>
