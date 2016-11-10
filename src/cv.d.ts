@@ -19,22 +19,26 @@ interface WorkSkills {
     full?: Array<string>
     partial?: Array<string>
 }
-interface WorkExperience {
+
+interface HasSkills { skills?: WorkSkills }
+interface HasDates { start: Date; end?: Date}
+
+interface SideProject extends HasSkills, HasDates {
+    name: string
+    url?: string
+}
+
+interface WorkExperience extends HasSkills, HasDates {
     position: string
     _icOrMgr: string // should be const mgr | ic
     company: string
-    start: Date
-    end?:  Date
     loc:   string
     highlights: Array<string>
-    skills?: WorkSkills
 }
 
-interface Education {
+interface Education extends HasDates {
     institution:  string
     degree:       string
-    start:        Date
-    end?:         Date
 }
 
 interface Certification {
@@ -50,7 +54,9 @@ interface Publication {
 interface Cv {
     basic: Basic
     workExperience: Array<WorkExperience>
+    sideProjects: Array<SideProject>
     education: Array<Education>
     certifications?: Array<Certification>
     publications?: Array<Publication>
+    skillsOrdering: _.Dictionary<Array<string>>
 }

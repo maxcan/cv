@@ -11,7 +11,7 @@ enum Level {
 
 export default ({cv}: { cv: Cv }) => {
     let allSkills: _.Dictionary<_.Dictionary<Level>> = {}
-    for (let job of cv.workExperience) {
+    let addExperience = (job: HasDates & HasSkills) => {
         if (job.skills != null) {
             const st = new Date(job.start).getFullYear()
             const en = (job.end ? (new Date(job.end).getFullYear()) : new Date().getFullYear())
@@ -29,21 +29,43 @@ export default ({cv}: { cv: Cv }) => {
             }
             checkSkills(Level.Full, job.skills.full)
             checkSkills(Level.Partial, job.skills.partial)
+
         }
     }
+    for (let job of cv.workExperience) { addExperience(job) }
+    for (let sp of cv.sideProjects) { addExperience(sp) }
     const skillKeysUnsorted = _.keys(allSkills)
     const skillKeys = _.sortBy(skillKeysUnsorted, (s) => {
         return _.min(_.keys(allSkills[s]))
     })
     const SkillCell = ({level}: { level: Level }) => {
         let skillClassName = "no-skill"
-        if (level == Level.Full) {skillClassName = "skill-full"}
-        if (level == Level.Partial) {skillClassName = "skill-partial"}
+        if (level == Level.Full) { skillClassName = "skill-full" }
+        if (level == Level.Partial) { skillClassName = "skill-partial" }
         return (
             <td className={skillClassName}></td>
         )
     }
+    let allCategorizedSkills = _.flatten(_.values(cv.skillsOrdering))
     // console.log("all ckills" , allSkills)
+    let uncategorizedSkills = _.filter(skillKeys, (sk => !_.includes(allCategorizedSkills, sk)))
+    const SkillSection = ({skillName, skillGroup}: {skillName: string, skillGroup:Array<string>}) => {
+        const presentSkills = _.filter(skillKeys, (sk => _.includes(skillGroup, sk)))
+        if (presentSkills.length === 0) { return <tbody></tbody> }
+        return (
+            <tbody>
+                <tr>
+                    <td className="category" colSpan={1 + years.length}>{skillName}</td>
+                </tr>
+                { presentSkills.map(sk =>
+                    <tr key={sk}>
+                        <td>{sk}</td>
+                        {years.map(yr => <SkillCell key={yr + '-' + sk} level={allSkills[sk][yr]} />)}
+                    </tr>
+                )}
+            </tbody>
+        )
+    }
     return (
         <table className="skills-table table skills-table table-bordered">
             <thead>
@@ -52,14 +74,8 @@ export default ({cv}: { cv: Cv }) => {
                     {years.map(yr => <th key={yr}>{yr}</th>)}
                 </tr>
             </thead>
-            <tbody>
-                {skillKeys.map(s =>
-                    <tr key={s}>
-                        <td>{s}</td>
-                        {years.map(yr => <SkillCell key={yr + '-' + s} level={allSkills[s][yr]} />)}
-                    </tr>
-                )}
-            </tbody>
+            { _.map(cv.skillsOrdering, (v, k) => <SkillSection key={k} skillName={k} skillGroup={v}/> )}
+            { uncategorizedSkills.length > 0 && <SkillSection skillName="other" skillGroup={uncategorizedSkills}/>}
         </table>
     )
 }

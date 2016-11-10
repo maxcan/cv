@@ -46,7 +46,7 @@ workExperience:
     end:             2015-07-02
     loc:             San Francisco Bay Area
     highlights:
-      - Built the product and team behind doxIQ.  
+      - Built the product and team behind doxIQ.
       - Pitched to and won the 2014 VentureBeat Marketing Tech Innovation Showdown.
       - Closed 2 enterprise contracts, providing the bulk of the revenue for docmunch.
       - Managed recruiting, front and back end enginering, dev ops, and data for doxIQ and docmunch.
@@ -67,20 +67,24 @@ workExperience:
     loc:              Singapore
     highlights:
       - Built the Hachicode loyalty platform.
-      - Built a HTML5 based mobile app which was used to let users engage with retailers, acquire receipt images with QR-code scanner UX style, accumulate points, and cash in points for rewards at their favorite retailers. 
+      - Built a HTML5 based mobile app which was used to let users engage with retailers, acquire receipt images with QR-code scanner UX style, accumulate points, and cash in points for rewards at their favorite retailers.
       - Developed OTA update system to deliver app updates to users with out a trip to the App store while complying with Apple and Google regulations.
       - Built the backend, Haskell based backend. The backend used OTS and custom OCR tools to scan receipt images uploaded by phones, determine the users' purchases and assign points accordingly.
       - Managed a team of 3 developers/product staff and one part time business development staff.
     skills:
         full:
+          - C
+          - ObjectiveC
+          - Cocoa
           - haskell
           - javascript
           - angularJS 1.x
           - AWS
-          - mongoDB
           - bootstrap
           - phonegap
+          - postgresql
         partial:
+          - mongoDB
           - jquery mobile
 
   - position:         Principal
@@ -96,6 +100,7 @@ workExperience:
     skills:
         full:
           - haskell
+          - postgresql
           - fix
           - VBA
 
@@ -132,8 +137,10 @@ workExperience:
         full:
           - OCaml
           - VBA
+          - postgresql
         partial:
           - perl
+          - fix
 
   - position:         Derivatives Broker
     _icOrMgr:         ic
@@ -166,6 +173,9 @@ workExperience:
         full:
           - java
           - javascript
+        partial:
+          - fix
+          - VBA
 
 education:
   - institution:  University of Pennsylvania
@@ -190,3 +200,51 @@ publications:
     description: >
       Towards a fair, mathematically grounded approach to cash vs equity compensation at private companies
     url: https://medium.com/this-time-is-different/interpolated-equity-12ddebcc63ef
+
+sideProjects:
+  - name: mail swipe
+    start:            2010-09-02
+    end:              2010-10-02
+    skills:
+      full:
+        - Swift
+        - iOS
+  - name: wod timer
+    start:            2016-09-02
+    end:              2016-10-02
+    skills:
+      full:
+        - Swift
+        - watchOS
+
+skillsOrdering:
+  languages:
+    - javascript
+    - typescript
+    - java
+    - VBA
+    - perl
+    - OCaml
+    - scala
+    - C#
+    - F#
+    - haskell
+    - C
+    - Swift
+    - ObjectiveC
+    - python
+  frameworks and tools:
+    - jenkins
+    - angularJS 1.x
+    - phonegap
+    - reactJS
+    - postgresql
+    - bootstrap
+    - jquery mobile
+    - mongoDB
+  platforms:
+    - fix
+    - AWS
+    - Cocoa
+    - iOS
+    - watchOS

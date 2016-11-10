@@ -218,7 +218,7 @@ const CvRoot = ({cv}: { cv: Cv }) => {
             </nav>
             <div className="cv-body" data-spy="scroll" data-target="#navbar">
                 <div className="container">
-                            <div id="top" className="affixxx">
+                            <div id="top" className="">
                                 <CvBasic basic={cv.basic} />
                             </div>
                             <hr />
