@@ -26,7 +26,7 @@ const CvArticle = ({name, children = null}: { children?: JSX.Element, name: stri
         <article id={noSpace}>
             <div className="row">
                 <div className="col-xs-3">
-                    <h1 className="text-right">{name}</h1>
+                    <h2 className="text-right">{name}</h2>
                 </div>
                 <div className="col-xs-9">
                     {children}
@@ -170,33 +170,44 @@ const CvSocial = ({social}: { social: Social }) => {
 const CvBasic = ({basic}: { basic: Basic }) => {
     return (
         <div className="basic">
-            <h1>{basic.name}</h1>
-            {basic.title && <h2>{basic.title}</h2>}
-            <div className="contact">
-                <CvSocialItem val={basic.loc} iconName="map-marker"/>
-                <CvSocialItem val={basic.phone} iconName="phone"/>
-                <CvSocialItem val={basic.email} iconName="envelope"/>
-                { /*
-                <h3>{basic.loc}</h3>
-                {basic.phone && <h3><FontAwesome name="phone"/>{basic.phone}</h3>}
-                {basic.email && <h3><FontAwesome name="envelope"/>{basic.email}</h3>}
-                     */}
+            <div className="row">
+                <div className="col-xs12">
+                    <h1 className="text-center">{basic.name}</h1>
+                </div>
             </div>
-            {basic.social && <CvSocial social={basic.social} />}
-            <hr />
-            {basic.passions &&
-                <span className="h4">
-                    passions in life:&nbsp;
-                    <ul className="strong comma-sep">
-                        {basic.passions.map((s: string) =>
-                            <li className="comma-sep" key={s}><strong>{s}</strong></li>
-                        )}
-                    </ul>
-                </span>
-            }
+            <hr/>
+            <div className="row">
+                <div className="col-xs-6">
+                    {basic.title && <h2>{basic.title}</h2>}
+                    <div className="contact">
+                        <CvSocialItem val={basic.loc} iconName="map-marker"/>
+                        <CvSocialItem val={basic.phone} iconName="phone"/>
+                        <CvSocialItem val={basic.email} iconName="envelope"/>
+                        { /*
+                        <h3>{basic.loc}</h3>
+                        {basic.phone && <h3><FontAwesome name="phone"/>{basic.phone}</h3>}
+                        {basic.email && <h3><FontAwesome name="envelope"/>{basic.email}</h3>}
+                            */}
+                    </div>
+                    {basic.social && <CvSocial social={basic.social} />}
+                </div>
+                <div className="col-xs-6">
+                    {basic.passions &&
+                        <span className="h4">
+                            personal passions:&nbsp;
+                            <ul className="strong comma-sep">
+                                {basic.passions.map((s: string) =>
+                                    <li className="comma-sep" key={s}><em>{s}</em></li>
+                                )}
+                            </ul>
+                        </span>
+                    }
+                </div>
+            </div>
         </div>
     )
 }
+
 // class CvRoot extends React.Component<{cv: Cv}, {} > {
 const CvRoot = ({cv}: { cv: Cv }) => {
     return (
@@ -225,12 +236,11 @@ const CvRoot = ({cv}: { cv: Cv }) => {
                             <hr />
                             <CvWork allWork={cv.workExperience} />
                             <hr />
-                            <CvEducation allEdu={cv.education} />
+                            <CvPublications allPub={cv.publications} />
                             <hr />
                             <CvCertifications allCerts={cv.certifications} />
                             <hr />
-                            <CvPublications allPub={cv.publications} />
-                            <hr />
+                            <CvEducation allEdu={cv.education} />
                             <div id="skills_table"><SkillsTable cv={cv} /></div>
                         </div>
             </div>
