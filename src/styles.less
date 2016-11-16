@@ -1,0 +1,62 @@
+@import "~bootstrap/less/bootstrap";
+
+ul.comma-sep {
+    list-style: none;
+    li {
+        display: inline-block;
+        padding-right: 0.25em;
+    }
+    li:after {
+        content: ", ";
+    }
+    li:last-child:after {
+        content: "" ;
+    }
+}
+
+table.skills-table {
+    background: black;
+    color: white;
+
+table.skills-table td.skill-full {
+    background-color: green;
+}
+
+table.skills-table td.skill-partial {
+    background-color: yellow;
+}
+
+header h1 {
+    display: inline-block;
+}
+
+.cv-body {
+    top: 4em;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    overflow: auto;
+    position: absolute;
+}
+
+body {
+    background: #aaa;
+}
+
+* {
+    font-family: Lato, "Helvetica Neue",Helvetica,Arial,sans-serif
+}
+
+article {
+    section {
+        margin-bottom: 1em;
+        border-top: 1px dashed #eee;
+    }
+    section:first-child {
+        margin-top: inherit;
+        border-top: none;
+    }
+    section:last-child {
+        margin-bottom: inherit;
+    }
+}
