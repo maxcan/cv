@@ -16,11 +16,21 @@ module.exports = {
         loaders: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
             { test: /\.tsx?$/, loader: "ts-loader" },
-            { test: /\.css$/, loader: "style-loader!css-loader!autoprefixer-loader" },
-            { test: /\.styl$/, loader: "style-loader!css-loader!autoprefixer-loader!stylus-loader" },
+            { test: /\.css$/, loader: "style-loader!css-loader" },
+            { test: /\.styl$/, loader: "style-loader!css-loader!stylus-loader" },
             { test: /\.less$/, loader: "style-loader!css-loader!less-loader" },
-            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
-            { test: /\.yaml$/, loader: "yaml"}
+            // { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
+            { test: /\.(png|)$/, loader: 'url-loader?limit=100000' },
+            {
+                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+            },
+            {
+                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'file-loader'
+            },
+
+            { test: /\.yaml$/, loader: "yaml" }
         ],
 
         preLoaders: [
@@ -41,5 +51,5 @@ module.exports = {
         fs: 'empty',
         net: 'empty',
         tls: 'empty'
-  }
+    }
 };

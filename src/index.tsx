@@ -4,7 +4,8 @@ import * as ReactDOM from "react-dom"
 import * as moment from "moment"
 
 import SkillsTable from "./skills"
-var FontAwesome = require('react-fontawesome') as any
+import {Icon} from 'react-fa'
+
 
 require("./styles.less")
 
@@ -80,7 +81,7 @@ const CvWork = ({allWork}: { allWork: Array<WorkExperience> }) => {
                 <CvArticleSection key={idx}
                     title={work.position}
                     subtitle={work.company}
-                    st={work.start} en={work.end} 
+                    st={work.start} en={work.end}
                     loc={work.loc}>
                     <ul className="highlights">
                         {_.map(work.highlights, (h, idx) => <li key={idx}>{h}</li>)}
@@ -149,7 +150,7 @@ const Dt = ({dt}: { dt: Date }) => {
 const CvSocialItem = ({iconName, val, isUrl}: {iconName: string, val?: string, isUrl?:Boolean}) => {
     return ( val ?
         <h3 className="social-item">
-            <FontAwesome name={iconName}/>
+            <Icon name={iconName}/>
             { isUrl ? <a href={val} className="social-val no-print-url">{val}</a> : <span className="social-val">{val}</span> }
         </h3>
     : <span></span>
