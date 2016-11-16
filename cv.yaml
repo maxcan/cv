@@ -8,6 +8,7 @@ basic:
     web: http://maxcan.github.io/cv/max.pdf
   passions:
     - entrepreneurship
+    - disrupting industrial dinosaurs
     - engineering
     - aviation
     - fitness
@@ -25,7 +26,7 @@ workExperience:
     loc:              San Francisco Bay Area
     highlights:
       - Acquired doxIQ in July 2015.
-      - Managed Research and Development team.
+      - Managed Research and Development team and helped drive global engineering recruiting.
       - Built PDF reflow and form field detection tools for cloud product.
       - Introduced Typescript and worked with engineering ICs to enhance code hygiene and improved engineering practices.
     skills:
@@ -66,7 +67,6 @@ workExperience:
     end:              2012-02-02
     loc:              Singapore
     highlights:
-      - Built the Hachicode loyalty platform.
       - Built a HTML5 based mobile app which was used to let users engage with retailers, acquire receipt images with QR-code scanner UX style, accumulate points, and cash in points for rewards at their favorite retailers.
       - Developed OTA update system to deliver app updates to users with out a trip to the App store while complying with Apple and Google regulations.
       - Built the backend, Haskell based backend. The backend used OTS and custom OCR tools to scan receipt images uploaded by phones, determine the users' purchases and assign points accordingly.

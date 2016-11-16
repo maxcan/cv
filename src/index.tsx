@@ -193,9 +193,9 @@ const CvBasic = ({basic}: { basic: Basic }) => {
                 </div>
                 <div className="col-xs-6">
                     {basic.passions &&
-                        <span className="h4">
+                        <span className="h5">
                             personal passions:&nbsp;
-                            <ul className="strong comma-sep">
+                            <ul className="comma-sep">
                                 {basic.passions.map((s: string) =>
                                     <li className="comma-sep" key={s}><em>{s}</em></li>
                                 )}
