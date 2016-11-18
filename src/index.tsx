@@ -57,15 +57,20 @@ const CvArticleSection = (props: CvArticleSectionProps) => {
             {props.subtitle && <h3>{props.subtitle}</h3>}
             <p>
                 <DtRng st={props.st} en={props.en} />
-                {props.loc && <em className="pxxull-right">,&nbsp;{props.loc}</em>}
-            </p>
+                {props.loc && <em>,&nbsp;{props.loc}</em>}
             { props.desc && <p>{props.desc}</p>}
+            </p>
+            <p>
             {props.children}
+            </p>
         </section>
     )
 }
 
 const CvWorkSkills = ({skills}: { skills: WorkSkills }) => {
+    if (!skills || !skills.full || !skills.partial || skills.full.length == 0 || skills.partial.length === 0) {
+        return <span className="hidden"></span>
+    }
     return (
         <ul className="skills">
             {skills.full && _.map(skills.full, (s, idx) => { <li key={idx}><strong>{s}</strong></li> })}
@@ -233,14 +238,11 @@ const CvRoot = ({cv}: { cv: Cv }) => {
                             <div id="top" className="">
                                 <CvBasic basic={cv.basic} />
                             </div>
-                            <hr />
+                            <hr/>
                             <CvWork allWork={cv.workExperience} />
-                            <hr />
                             <CvPublications allPub={cv.publications} />
-                            <hr />
-                            <CvCertifications allCerts={cv.certifications} />
-                            <hr />
                             <CvEducation allEdu={cv.education} />
+                            <CvCertifications allCerts={cv.certifications} />
                             <div id="skills_table"><SkillsTable cv={cv} /></div>
                         </div>
             </div>

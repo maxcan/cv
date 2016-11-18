@@ -58,8 +58,8 @@ header h1 {
 
 article {
     section {
-        margin-bottom: 1em;
-        border-top: 1px dashed #eee;
+        margin-bottom: @font-size-base * .75;
+        border-bottom: 1px dashed #eee;
         page-break-inside: avoid;
     }
     section:first-child {
@@ -68,6 +68,7 @@ article {
     }
     section:last-child {
         margin-bottom: inherit;
+        border-bottom: none;
     }
 }
 
@@ -80,12 +81,15 @@ article {
     a.no-print-url:after {
         content: none
         }
-
-    @font-size-base:          1.2vw;
+    @line-height-base: 1.35;
+    @font-size-base:          1.15vw;
+    article section {
+        margin-bottom: @font-size-base * .5;
+    }
     .make-font-size(@mult) {
         font-size: @font-size-base * @mult;
         line-height:  (@mult * @font-size-base * @line-height-base);
-        margin-top: @font-size-base * @mult / 3;
+        margin-top: @font-size-base * @mult / 4;
         margin-bottom: @font-size-base * @mult / 5;
     }
     .text-large { .make-font-size(1.25);} // ~18px
@@ -94,8 +98,11 @@ article {
         margin-top: @font-size-base;
         margin-bottom: @font-size-base;
     }
+    p {
+        margin: 0 0 @font-size-base / 1.2;
+    }
     body { .make-font-size(1)}
-    h1 { font-weight: bold; .make-font-size( 3 );} // ~36px
+    h1 { font-weight: bold; .make-font-size( 3.2 );} // ~36px
     h2 { .make-font-size( 1.85);} // ~30px
     h3 { .make-font-size( 1.25); }// ~24px
     h4 { .make-font-size( 1.10); }// ~18px
