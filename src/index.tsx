@@ -2,7 +2,7 @@ import * as _ from "lodash"
 import * as React from "react"
 import * as ReactDOM from "react-dom"
 import * as moment from "moment"
-
+import * as yaml from "js-yaml"
 import SkillsTable from "./skills"
 import {Icon} from 'react-fa'
 
@@ -250,11 +250,11 @@ const CvRoot = ({cv}: { cv: Cv }) => {
     )
 }
 
-// const cvYamlUrl = "./cv.yaml"
-// $.get(cvYamlUrl)
-//     .done(rawYaml => {
-//         const cv:Cv = YAML.parse(rawYaml) as Cv
+const cvYamlUrl = "https://raw.githubusercontent.com/maxcan/cv/master/cv.yaml"
+$.get(cvYamlUrl)
+    .done(rawYaml => {
+        const cvRemote:Cv = yaml.safeLoad(rawYaml) as Cv
 ReactDOM.render(
-    <CvRoot cv={cv} />
+    <CvRoot cv={cvRemote} />
     , document.getElementById("root"))
-    // })
+    })
