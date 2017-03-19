@@ -20,7 +20,7 @@ basic:
     and loads the bags
 workExperience:
   - position:         Director of Research and Development
-    _icOrMgr:         mgr
+    num_reports:      4
     company:          Nitro Software Inc.
     start:            2015-07-02
     loc:              San Francisco Bay Area
@@ -41,7 +41,7 @@ workExperience:
           - python
           - jenkins
   - position:        Co-Founder
-    _icOrMgr:        mgr
+    numReports:      5
     company:         Docmunch / doxIQ
     start:           2013-01-02
     end:             2015-07-02
@@ -61,7 +61,7 @@ workExperience:
           - mongoDB
           - bootstrap
   - position:         CEO and Founder
-    _icOrMgr:         mgr
+    numReports:       2
     company:          River Valley Networks Pte Ltd D.B.A. Hachicode
     start:            2010-09-02
     end:              2012-02-02
@@ -88,7 +88,6 @@ workExperience:
           - jquery mobile
 
   - position:         Principal
-    _icOrMgr:         mgr
     company:          EKC Research Pte Ltd
     start:            2009-06-02
     end:              2011-01-02
@@ -105,7 +104,7 @@ workExperience:
           - VBA
 
   - position:         Senior Arbitrage Trader
-    _icOrMgr:         mgr
+    numReports:       1
     company:          Nyenburgh Pte Ltd
     start:            2008-02-02
     end:              2009-05-02
@@ -123,7 +122,7 @@ workExperience:
           - F#
 
   - position:         Junior Trader
-    _icOrMgr:         ic
+    numReports:       1
     company:          Jane Street Capital
     start:            2006-09-02
     end:              2007-12-02
@@ -143,7 +142,6 @@ workExperience:
           - fix
 
   - position:         Derivatives Broker
-    _icOrMgr:         ic
     company:          UBS Investment Bank
     start:            2005-06-02
     end:              2006-09-02
@@ -161,7 +159,6 @@ workExperience:
           - java
 
   - position:         IT Developer
-    _icOrMgr:         ic
     company:          UBS Investment Bank
     start:            2004-06-02
     end:              2005-06-02
@@ -213,7 +210,7 @@ sideProjects:
     start:            2016-09-02
     end:              2016-10-02
     skills:
-      full:
+      partial:
         - Swift
         - watchOS
 

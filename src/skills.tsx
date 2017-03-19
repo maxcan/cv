@@ -74,7 +74,7 @@ export default ({cv}: { cv: Cv }) => {
                     {years.map(yr => <th key={yr}>{yr}</th>)}
                 </tr>
             </thead>
-            { _.map(cv.skillsOrdering, (v, k) => <SkillSection key={k} skillName={k} skillGroup={v}/> )}
+            { _.map(cv.skillsOrdering, (v, k) => <SkillSection key={k} skillName={k || ""} skillGroup={v}/> )}
             { uncategorizedSkills.length > 0 && <SkillSection skillName="other" skillGroup={uncategorizedSkills}/>}
         </table>
     )

@@ -9,7 +9,7 @@ import {Icon} from 'react-fa'
 
 require("./styles.less")
 
-const cv: Cv = require("!json!yaml!../cv.yaml") as Cv
+const cv: Cv = require("../cv.yaml") as Cv
 
 declare var require: {
     <T>(path: string): T
@@ -113,13 +113,14 @@ const CvEducation = ({allEdu}: { allEdu: Education[] }) => {
     )
 }
 
-const CvPublications = ({allPub}: { allPub: Publication[] }) => {
+const CvPublications = ({allPub}: { allPub?: Publication[] }) => {
+    if (!allPub) { return <span style={{display: "none"}}/>}
     return (
         <CvArticle name="Publications">
             {_.map(allPub, (pub, idx) =>
                 <CvArticleSection key={idx}
                     url={pub.url}
-                    title={pub.name}
+                    title={pub.name || ""}
                     desc={pub.description}
                     >
                 </CvArticleSection>
@@ -128,7 +129,8 @@ const CvPublications = ({allPub}: { allPub: Publication[] }) => {
     )
 }
 
-const CvCertifications = ({allCerts}: { allCerts: Certification[] }) => {
+const CvCertifications = ({allCerts}: { allCerts?: Certification[] }) => {
+    if (!allCerts) { return <span style={{display: "none"}}/>}
     return (
         <CvArticle name="Certifications">
             {_.map(allCerts, (cert, idx) =>
@@ -143,8 +145,9 @@ const CvCertifications = ({allCerts}: { allCerts: Certification[] }) => {
 }
 
 const DtRng = ({st, en}: { st?: Date, en?: Date }) => {
-    if (!st && !en) return <span style={{ display: "none" }}></span>
-    if (!st) return <Dt dt={en} />
+    if (!st) {
+        return (en ? <Dt dt={en} /> : <span style={{ display: "none" }}></span>)
+    }
     return <span className="dateRange"><Dt dt={st} />&nbsp;-&nbsp;{en ? <Dt dt={en} /> : <span>Present</span>}</span>
 }
 const Dt = ({dt}: { dt: Date }) => {

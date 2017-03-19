@@ -30,7 +30,7 @@ interface SideProject extends HasSkills, HasDates {
 
 interface WorkExperience extends HasSkills, HasDates {
     position: string
-    _icOrMgr: string // should be const mgr | ic
+    numReports?: number
     company: string
     loc:   string
     highlights: Array<string>
