@@ -1,7 +1,8 @@
 module.exports = {
     entry: "./index.tsx",
     output: {
-        filename: "./dist/bundle.js",
+        filename: ".bundle.js",
+        path: "./dist/"
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -9,31 +10,28 @@ module.exports = {
 
     resolve: {
         // Add '.ts' and '.tsx' as resolvable extensions.
-        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
 
     module: {
-        loaders: [
+        rules: [
             // All files with a '.ts' or '.tsx' extension will be handled by 'ts-loader'.
             { test: /\.tsx?$/, loader: "ts-loader" },
-            { test: /\.css$/, loader: "style-loader!css-loader" },
-            { test: /\.styl$/, loader: "style-loader!css-loader!stylus-loader" },
-            { test: /\.less$/, loader: "style-loader!css-loader!less-loader" },
+            { test: /\.css$/, use: ["style-loader", "css-loader"] },
+            { test: /\.styl$/, use: ["style-loader", "css-loader","stylus-loader"] },
+            { test: /\.less$/, use: ["style-loader","css-loader","less-loader"] },
             // { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
             { test: /\.(png|)$/, loader: 'url-loader?limit=100000' },
-            {
-                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: 'url-loader?limit=10000&mimetype=application/font-woff'
-            },
-            {
-                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                loader: 'file-loader'
-            },
+            // {
+            //     test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            //     loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+            // },
+            // {
+            //     test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+            //     loader: 'file-loader'
+            // },
 
-            { test: /\.yaml$/, loader: "yaml" }
-        ],
-
-        preLoaders: [
+            { test: /\.yaml$/, loader: "yaml-loader" },
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             { test: /\.js$/, loader: "source-map-loader" }
         ],
