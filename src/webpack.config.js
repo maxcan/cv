@@ -1,8 +1,7 @@
 module.exports = {
     entry: "./index.tsx",
     output: {
-        filename: ".bundle.js",
-        path: "./dist/"
+        filename: "./dist/bundle.js",
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -21,19 +20,20 @@ module.exports = {
             { test: /\.styl$/, use: ["style-loader", "css-loader","stylus-loader"] },
             { test: /\.less$/, use: ["style-loader","css-loader","less-loader"] },
             // { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
-            { test: /\.(png|)$/, loader: 'url-loader?limit=100000' },
-            // {
-            //     test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            //     loader: 'url-loader?limit=10000&mimetype=application/font-woff'
-            // },
-            // {
-            //     test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-            //     loader: 'file-loader'
-            // },
+            { test: /\.(png|)$/, use: 'url-loader?limit=100000' },
+            {
+                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use: 'url-loader?mimetype=application/font-woff'
+            },
+            {
+                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use: 'url-loader'
+            },
 
-            { test: /\.yaml$/, loader: "yaml-loader" },
+            { test: /\.yaml$/, use: ["json-loader","yaml-loader"] },
+            { test: /\.json$/, use: ["json-loader"] },
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { test: /\.js$/, loader: "source-map-loader" }
+            { test: /\.js$/, enforce:"pre", use: "source-map-loader" }
         ],
     },
 
@@ -49,5 +49,12 @@ module.exports = {
         fs: 'empty',
         net: 'empty',
         tls: 'empty'
-    }
+    },
+    devServer: {
+        historyApiFallback: true,
+        port: 3200,
+        inline: true
+    },
+
+
 };

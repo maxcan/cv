@@ -4,7 +4,15 @@
   "description": "Quick little react app to render my CV",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "build:schema": "typescript-json-schema cv.d.ts Cv > gen/schema.json",
+    "deploy:yaml": "aws --profile yamlcv s3 cp ../cv.yaml s3://cv.cantor.mx/maxcan.yaml",
+    "deploy:html": "aws --profile yamlcv s3 cp index.html s3://cv.cantor.mx/",
+    "deploy:js": "aws --profile yamlcv s3 cp dist/bundle.js s3://cv.cantor.mx/dist/bundle.js",
+    "deploy:pdf": "aws --profile yamlcv s3 cp max_cantor.pdf s3://cv.cantor.mx/",
+    "s3deploy": "yarn run build && for c in yaml pdf html js; do yarn run deploy:$c; done",
+    "deploy": "yarn run build && yarn run s3deploy"
   },
   "author": "",
   "license": "ISC",
@@ -30,6 +38,7 @@
     "stylus-loader": "^3.0.1",
     "ts-loader": "^2.0.2",
     "typescript": "^2.2.1",
+    "typescript-json-schema": "^0.10.0",
     "url-loader": "^0.5.8",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.2",
@@ -39,6 +48,7 @@
     "bluebird": "^3.5.0",
     "jquery": "^3.2.0",
     "js-yaml": "^3.8.2",
+    "json-schema": "^0.2.3",
     "lodash": "^4.17.4",
     "moment": "^2.18.0",
     "react": "^15.4.2",

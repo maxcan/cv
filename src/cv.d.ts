@@ -7,12 +7,19 @@ interface Basic {
     email?: string
     social: Social
     passions?: Array<string>
+    headlines?: Array<CvHeadline>
     description: string
+}
+interface CvHeadline {
+    header: string
+    body: Array<string>
 }
 
 interface Social {
     linkedIn?: string
     web?: string
+    pdf?: string
+    github?: string
     facebook?: string
 }
 interface WorkSkills {

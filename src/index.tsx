@@ -6,7 +6,6 @@ import * as yaml from "js-yaml"
 import SkillsTable from "./skills"
 import {Icon} from 'react-fa'
 
-
 require("./styles.less")
 
 const cv: Cv = require("../cv.yaml") as Cv
@@ -39,6 +38,7 @@ const CvArticle = ({name, children = null}: { children?: JSX.Element, name: stri
 interface CvArticleSectionProps {
     title: string
     subtitle?: string
+    subsubtitle?: string
     loc?: string
     en?: Date
     st?: Date
@@ -54,15 +54,16 @@ const CvArticleSection = (props: CvArticleSectionProps) => {
             ? <a href={props.url}><h2>{props.title}</h2></a>
             : <h2>{props.title}</h2>
             }
-            {props.subtitle && <h3>{props.subtitle}</h3>}
-            <p>
+            {props.subtitle && <h3>{props.subtitle}</h3> }
+            {props.subsubtitle && <p>{props.subsubtitle}</p> }
+            <div>
                 <DtRng st={props.st} en={props.en} />
                 {props.loc && <em>,&nbsp;{props.loc}</em>}
-            { props.desc && <p>{props.desc}</p>}
-            </p>
-            <p>
+            { props.desc && <div>{props.desc}</div>}
+            </div>
+            <div>
             {props.children}
-            </p>
+            </div>
         </section>
     )
 }
@@ -79,26 +80,33 @@ const CvWorkSkills = ({skills}: { skills: WorkSkills }) => {
     )
 }
 
-const CvWork = ({allWork}: { allWork: Array<WorkExperience> }) => {
+const CvWorkItem = ({ work }: { work: WorkExperience }) => {
+    const sst = work.numReports ? work.numReports + " direct reports" : undefined
+    return (
+        <CvArticleSection
+            title={work.position}
+            subtitle={work.company}
+            subsubtitle={sst}
+            st={work.start} en={work.end}
+            loc={work.loc}>
+            <ul className="highlights">
+                {_.map(work.highlights, (h, idx) => <li key={idx}>{h}</li>)}
+            </ul>
+            {work.skills && <CvWorkSkills skills={work.skills} />}
+        </CvArticleSection>
+    )
+}
+
+const CvWork = ({ allWork }: { allWork: Array<WorkExperience> }) => {
     return (
         <CvArticle name="Work Experience">
-            {_.map(allWork, (work, idx) =>
-                <CvArticleSection key={idx}
-                    title={work.position}
-                    subtitle={work.company}
-                    st={work.start} en={work.end}
-                    loc={work.loc}>
-                    <ul className="highlights">
-                        {_.map(work.highlights, (h, idx) => <li key={idx}>{h}</li>)}
-                    </ul>
-                    {work.skills && <CvWorkSkills skills={work.skills} />}
-                </CvArticleSection>
+            {_.map(allWork, (work, idx) => <CvWorkItem key={idx} work={work} />
             )}
         </CvArticle>
     )
 }
 
-const CvEducation = ({allEdu}: { allEdu: Education[] }) => {
+const CvEducation = ({ allEdu }: { allEdu: Education[] }) => {
     return (
         <CvArticle name="Education">
             {_.map(allEdu, (edu, idx) =>
@@ -113,8 +121,8 @@ const CvEducation = ({allEdu}: { allEdu: Education[] }) => {
     )
 }
 
-const CvPublications = ({allPub}: { allPub?: Publication[] }) => {
-    if (!allPub) { return <span style={{display: "none"}}/>}
+const CvPublications = ({ allPub }: { allPub?: Publication[] }) => {
+    if (!allPub) { return <span style={{ display: "none" }} /> }
     return (
         <CvArticle name="Publications">
             {_.map(allPub, (pub, idx) =>
@@ -167,8 +175,10 @@ const CvSocialItem = ({iconName, val, isUrl}: {iconName: string, val?: string, i
 const CvSocial = ({social}: { social: Social }) => {
     return (
         <div className="contact social">
-            <CvSocialItem val={social.linkedIn} iconName="linkedin-square"/>
+            <CvSocialItem val={social.github} iconName="github-square" isUrl={true}/>
             <CvSocialItem val={social.web} iconName="link" isUrl={true}/>
+            <CvSocialItem val={social.pdf} iconName="file-pdf-o" isUrl={true}/>
+            <CvSocialItem val={social.linkedIn} iconName="linkedin-square" isUrl={true}/>
             <CvSocialItem val={social.facebook} iconName="facebook-square"/>
         </div>
     )
@@ -184,6 +194,22 @@ const CvBasic = ({basic}: { basic: Basic }) => {
                 </div>
             </div>
             <hr/>
+            { basic.headlines && 
+                <div className="row">
+                    { basic.headlines.map((headline, idx) => 
+                        <div key={idx} className="col-xs-3 col-md-3">
+                            <h3>{headline.header}</h3>
+                            <ul>
+                                {headline.body.map((str, bdyIdx) =>
+                                    <li key={bdyIdx}>{str}</li>
+                                )}
+                            </ul>
+                            {/*<p>{headline.body}</p>*/}
+                        </div>
+                    )}
+                </div>
+            }
+            { basic.headlines &&  <hr/> }
             <div className="row">
                 <div className="col-xs-6">
                     {basic.title && <h2>{basic.title}</h2>}
@@ -203,9 +229,9 @@ const CvBasic = ({basic}: { basic: Basic }) => {
                     {basic.passions &&
                         <span className="h5">
                             personal passions:&nbsp;
-                            <ul className="comma-sep">
+                            <ul className="xxcomma-sep">
                                 {basic.passions.map((s: string) =>
-                                    <li className="comma-sep" key={s}><em>{s}</em></li>
+                                    <li className="xxcomma-sep" key={s}>{s}</li>
                                 )}
                             </ul>
                         </span>
@@ -253,11 +279,35 @@ const CvRoot = ({cv}: { cv: Cv }) => {
     )
 }
 
-const cvYamlUrl = "https://raw.githubusercontent.com/maxcan/cv/master/cv.yaml"
+// const cvYamlUrl = "https://raw.githubusercontent.com/maxcan/cv/master/cv.yaml"
+// const cvYamlUrl = "https://s3-us-west-2.amazonaws.com/yamlcv-dev/maxcan.yaml"
+const cvYamlUrl = "/maxcan.yaml"
+// const schema = require("./gen/schema.json")
 $.get(cvYamlUrl)
     .done(rawYaml => {
-        const cvRemote:Cv = yaml.safeLoad(rawYaml) as Cv
-ReactDOM.render(
-    <CvRoot cv={cvRemote} />
-    , document.getElementById("root"))
+        const cvRemote: Cv = yaml.safeLoad(rawYaml) as Cv
+        // const ajv = new Ajv()
+        // ajv.addFormat("date-time", (data:any) => {
+        //     console.log("checking foramte", data)
+        //     return Boolean(data.getDate )
+        // })
+        // const valid = ajv.validate(schema, cvRemote)
+        // // (validator.addFormat as any)({'date-time': (data: any) => {
+        // //     console.log("validatng date", data)
+        // //     if (data.getDate) { return null }
+        // //     return "must be a date"
+        // // }}
+        // // )
+        // console.log(cvRemote)
+        // if (!valid) {
+            
+        // ReactDOM.render(
+        //     (<pre>{JSON.stringify(ajv.errors, null, " ")} </pre>)
+        //     , document.getElementById("root"))
+        // return
+        // }
+        
+        ReactDOM.render(
+            <CvRoot cv={cvRemote} />
+            , document.getElementById("root"))
     })

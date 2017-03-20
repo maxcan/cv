@@ -1,28 +1,47 @@
 basic:
-  name: Max Cantor
+  name:  Max Cantor
   loc: San Francisco, CA
   phone: +1-215-620-3000
   email: i@cantor.mx
   social:
     linkedIn: https://www.linkedin.com/in/mxcan
-    web: http://maxcan.github.io/cv/max.pdf
+    web: https://cv.cantor.mx
+    pdf: https://cv.cantor.mx/max_cantor.pdf
+    github: https://github.com/maxcan
   passions:
     - entrepreneurship
-    - disrupting industrial dinosaurs
-    - engineering
     - aviation
     - fitness
-    - lifting heavy things
-    - overengineered, aesthetically hindered CVs (not really)
+    - engineering
+  headlines:
+    - header: Strong cross-functional communicator
+      body:
+        - Diverse technical and non technical experiece.  
+        - Excels at communicating deeply
+          technical issues to non-technical audiences and vice-versa.
+    - header: Broad, global experience
+      body:
+        - Multiple years of experiece in Japan, Singapore, and the U.S.
+    - header: Saying 'no' & fighting scope-bloat
+      body:
+        - Scope bloat is a major cause of project failures in the
+          enterprise.  
+        - Builds narrowest possible MVP feature set, followed by an iterative
+          approach to adding capabilities.
+    - header: Finding 80/20 solutions
+      body:
+        - Looks for quick but sustainable hacks around a problem space.
+        - Often strives for "80% of the value for 20% of the effort".
   description: >
     Sells ice to eskimos,
     builds the e-commerce site and logistics backend,
     and loads the bags
 workExperience:
   - position:         Director of Research and Development
-    num_reports:      4
+    numReports:      4
     company:          Nitro Software Inc.
     start:            2015-07-02
+    end:              2016-11-30
     loc:              San Francisco Bay Area
     highlights:
       - Acquired doxIQ in July 2015.
@@ -35,7 +54,9 @@ workExperience:
           - javascript
           - typescript
           - reactJS
+          - redux
           - AWS
+          - webpack
         partial:
           - angularJS 1.x
           - python
@@ -199,6 +220,19 @@ publications:
     url: https://medium.com/this-time-is-different/interpolated-equity-12ddebcc63ef
 
 sideProjects:
+  - name: macrofit
+    start:            2017-01-01
+    skills:
+      full:
+        - typescript
+        - graphql
+        - reactjs
+        - redux
+        - google material
+        - webpack
+      partial:
+        - postgresql
+        - javascript
   - name: mail swipe
     start:            2010-09-02
     end:              2010-10-02
@@ -216,7 +250,6 @@ sideProjects:
 
 skillsOrdering:
   languages:
-    - javascript
     - typescript
     - java
     - VBA
@@ -226,19 +259,25 @@ skillsOrdering:
     - C#
     - F#
     - haskell
+    - javascript
     - C
     - Swift
     - ObjectiveC
     - python
+    - reactjs
   frameworks and tools:
     - jenkins
+    - redux
+    - graphql
     - angularJS 1.x
+    - google material
     - phonegap
     - reactJS
     - postgresql
     - bootstrap
     - jquery mobile
     - mongoDB
+    - webpack
   platforms:
     - fix
     - AWS

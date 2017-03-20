@@ -2,6 +2,12 @@
 # yarn lockfile v1
 
 
+"@types/ajv@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/ajv/-/ajv-1.0.0.tgz#4fb2440742f2f6c30e7fb0797b839fc6f696682a"
+  dependencies:
+    ajv "*"
+
 "@types/bluebird@^3.5.0":
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.0.tgz#2633470a4eabe9a47cd9a45fdb20ed5f93407bca"
@@ -40,6 +46,10 @@
   version "15.0.16"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.16.tgz#78e39511a9cfcabf7f74ecd55180522f4290a0c1"
 
+"@types/tv4@^1.2.28":
+  version "1.2.28"
+  resolved "https://registry.yarnpkg.com/@types/tv4/-/tv4-1.2.28.tgz#0bbda35bf4a85d9e5be56a00519981cb9e408cd5"
+
 "@types/yamljs@^0.2.30":
   version "0.2.30"
   resolved "https://registry.yarnpkg.com/@types/yamljs/-/yamljs-0.2.30.tgz#d034e1d329e46e8d0f737c9a8db97f68f81b5382"
@@ -69,7 +79,7 @@ ajv-keywords@^1.1.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-1.5.1.tgz#314dd0a4b3368fad3dfcdc54ede6171b886daf3c"
 
-ajv@^4.7.0, ajv@^4.9.1:
+ajv@*, ajv@^4.11.5, ajv@^4.7.0, ajv@^4.9.1:
   version "4.11.5"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-4.11.5.tgz#b6ee74657b993a01dce44b7944d56f485828d5bd"
   dependencies:
@@ -1151,9 +1161,20 @@ glob-parent@^2.0.0:
   dependencies:
     is-glob "^2.0.0"
 
-glob@7.0.x, glob@^7.0.5:
+glob@7.0.x:
   version "7.0.6"
   resolved "https://registry.yarnpkg.com/glob/-/glob-7.0.6.tgz#211bafaf49e525b8cd93260d14ab136152b3f57a"
+  dependencies:
+    fs.realpath "^1.0.0"
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "^3.0.2"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
+glob@^7.0.5, glob@~7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.1.tgz#805211df04faaf1c63a3600306cdf5ade50b2ec8"
   dependencies:
     fs.realpath "^1.0.0"
     inflight "^1.0.4"
@@ -1528,7 +1549,7 @@ json-loader@^0.5.4:
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/json-loader/-/json-loader-0.5.4.tgz#8baa1365a632f58a3c46d20175fc6002c96e37de"
 
-json-schema@0.2.3:
+json-schema@0.2.3, json-schema@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/json-schema/-/json-schema-0.2.3.tgz#b480c892e59a2f05954ce727bd3f2a4e882f9e13"
 
@@ -1722,11 +1743,7 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
-"mime-db@>= 1.24.0 < 2":
-  version "1.27.0"
-  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.27.0.tgz#820f572296bbd20ec25ed55e5b5de869e5436eb1"
-
-mime-db@~1.26.0:
+"mime-db@>= 1.24.0 < 2", mime-db@~1.26.0:
   version "1.26.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.26.0.tgz#eaffcd0e4fc6935cf8134da246e2e6c35305adff"
 
@@ -2931,6 +2948,10 @@ tunnel-agent@^0.6.0:
   dependencies:
     safe-buffer "^5.0.1"
 
+tv4@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/tv4/-/tv4-1.3.0.tgz#d020c846fadd50c855abb25ebaecc68fc10f7963"
+
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
@@ -2942,9 +2963,22 @@ type-is@~1.6.14:
     media-typer "0.3.0"
     mime-types "~2.1.13"
 
+typescript-json-schema@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/typescript-json-schema/-/typescript-json-schema-0.10.0.tgz#e05a02c466e9f5998d09e9565dab76f1bf5d6bae"
+  dependencies:
+    glob "~7.1.1"
+    json-stable-stringify "^1.0.1"
+    typescript "~2.1.5"
+    yargs "^6.6.0"
+
 typescript@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.2.1.tgz#4862b662b988a4c8ff691cc7969622d24db76ae9"
+
+typescript@~2.1.5:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.1.6.tgz#40c7e6e9e5da7961b7718b55505f9cac9487a607"
 
 ua-parser-js@^0.7.9:
   version "0.7.12"
@@ -3209,7 +3243,7 @@ yargs-parser@^4.2.0:
   dependencies:
     camelcase "^3.0.0"
 
-yargs@^6.0.0:
+yargs@^6.0.0, yargs@^6.6.0:
   version "6.6.0"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-6.6.0.tgz#782ec21ef403345f830a808ca3d513af56065208"
   dependencies:
